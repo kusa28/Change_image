@@ -53,6 +53,20 @@
 
         // 一定間隔で画像を切り替えるタイマーを設定
         setInterval(changeImage, interval);
+
+        // フルスクリーンを切り替える関数
+        function toggleFullScreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch((err) => {
+                    alert(`フルスクリーンモードの切り替えに失敗しました: ${err.message}`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        // タップ時にフルスクリーンを切り替えるイベントリスナーを追加
+        document.addEventListener('click', toggleFullScreen);
     </script>
 </body>
 </html>
